@@ -24,3 +24,4 @@ with the temperature of 10.4
 - All the functions require unit tests. I would use pytest to do these.
 - There are lost of locations where Exception handling needs to be included.
 - Would be cool to show what the warmest weekend is.
+- All the statistical work currently includes the outlying values. For example the -300 value is obviously an outlier.
