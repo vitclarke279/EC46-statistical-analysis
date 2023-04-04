@@ -31,3 +31,16 @@ def get_list_of_values(data_list: List[dict], value_key: str) -> list:
     return [
         data_dict[value_key] for data_dict in data_list if value_key in data_dict
     ]
+
+
+def convert_values_in_list_to_specified_type(values_list: list, type: type) -> list:
+    """
+    Using the given value key, create the list of values from the given list
+    of dictionaries.
+    Args:
+        values_list (list): The list of values to convert.
+        type (str): The type to convert the values to.
+    Returns:
+        list: A list of values of given type.
+    """
+    return list(map(type, values_list))
