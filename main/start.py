@@ -5,8 +5,10 @@ import utils.statistics as statistic_utils
 
 csv_file = "csv_files/uk_ec46_tt.csv"
 
+# Process the csv into a list of dicts
 list_of_dicts = data_utils.convert_csv_into_list_of_dicts(csv=csv_file)
 
+# Extract the temperatures from the csv into a list and convert them to floats
 temperature_list = data_utils.get_list_of_values(
     data_list=list_of_dicts, value_key='awg_areacalc_val'
 )
@@ -14,6 +16,7 @@ temperature_list = data_utils.convert_values_in_list_to_specified_type(
     values_list=temperature_list, type=float
 )
 
+# Statistical results and calculations
 lowest_temperature = statistic_utils.find_extreme_value(
     values_list=temperature_list, mode='min'
 )
