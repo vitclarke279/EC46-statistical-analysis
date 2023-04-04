@@ -1,4 +1,5 @@
 from csv import DictReader
+from datetime import datetime
 from typing import List
 
 
@@ -44,3 +45,23 @@ def convert_values_in_list_to_specified_type(values_list: list, type: type) -> l
         list: A list of values of given type.
     """
     return list(map(type, values_list))
+
+
+def return_values_of_specific_week_days(values_list: list, days_of_week: list) -> list:
+    """
+    Processes the given list of values to return only the data of a specific week day.
+    Args:
+        values_list (list): The list of values to process.
+        days_of_week (list): The week days to extract.
+    Returns:
+        list: A list of data only from the specified week_day.
+    """
+    filtered_data = []
+    for value in values_list:
+        date_time = datetime.strptime(value['awg_areacalc_forecast_dtg'], '%Y-%m-%d %H:%M:%S')
+        day_of_week = date_time.strftime('%A')
+
+        if day_of_week in days_of_week:
+            filtered_data.append(value)
+
+    return filtered_data
